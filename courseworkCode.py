@@ -14,6 +14,7 @@ def decorationDash():
 # Welcome screen section
 def welcomeScreenMain():
     print("\n")
+    print(decorationDash())
     print(decorationStar())
     print("\t\t\tLaptop Sales/Purchase")
     print(decorationStar())
@@ -45,12 +46,14 @@ def welcomeScreenMain():
     elif userChoice == 2:
         sellLaptop()
     elif userChoice == 3:
+        print(decorationStar())
+        print(decorationDash())
         print(getLaptopStock())
         print(decorationDash())
         print(decorationStar())
-        input("Press any key to get back to the main screen")
+        input("Press any key to get back to the main screen")  # waiting for user input
 
-        welcomeScreenMain()
+        welcomeScreenMain()  # calls the main screen again
     else:
         sys.exit("\nProgram Closed\n")
 
