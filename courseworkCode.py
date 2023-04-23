@@ -16,7 +16,19 @@ print("----------------------------------------------------------------------")
 print("**********************************************************************")
 print("\n")
 
-userChoiceWelcomeScreen = int(input("Your choice: "))
+while True:
+    try:
+        userChoiceWelcomeScreen = int(input("Your choice: "))
+        break
+    except ValueError:
+        print("Selection Invalid, please try again!")
+
+def getLaptopStock():
+    # function to get the stock of current laptop
+
+
+def sellLaptop():
+    # funtion to sell laptops
 
 
 # Laptop Sale
