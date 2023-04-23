@@ -32,9 +32,9 @@ def welcomeScreenMain():
     # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
     while True:
         try:
-            userChoiceWelcomeScreen = int(input("Your choice: "))
+            userChoice = int(input("Your choice: "))
 
-            if userChoiceWelcomeScreen < 1 or userChoiceWelcomeScreen > 4:
+            if userChoice < 1 or userChoice > 4:
                 print("\nSelection Invalid, please try again!\n")
                 print(decorationDash())
                 continue
@@ -45,11 +45,11 @@ def welcomeScreenMain():
             print("\nSelection Invalid, please try again!\n")
             print(decorationDash())
 
-    if userChoiceWelcomeScreen == 1:
+    if userChoice == 1:
         getLaptopStock()
-    elif userChoiceWelcomeScreen == 2:
+    elif userChoice == 2:
         sellLaptop()
-    elif userChoiceWelcomeScreen == 3:
+    elif userChoice == 3:
         getLaptopStock()
     else:
         sys.exit("\nProgram Closed\n")
