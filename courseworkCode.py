@@ -13,6 +13,7 @@ def decorationDash():
 
 # Welcome screen section
 def welcomeScreenMain():
+    print("\n")
     print(decorationStar())
     print("\t\t\tLaptop Sales/Purchase")
     print(decorationStar())
@@ -29,30 +30,41 @@ def welcomeScreenMain():
     print(decorationStar())
     print("\n")
 
-    # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
     while True:
-        try:
-            userChoice = int(input("Your choice: "))
+        userChoice = getUserInput()
 
-            if userChoice < 1 or userChoice > 4:
-                print("\nSelection Invalid, please try again!\n")
-                print(decorationDash())
-                continue
-
-            break
-
-        except ValueError:
+        if userChoice < 1 or userChoice > 4:
             print("\nSelection Invalid, please try again!\n")
             print(decorationDash())
+            continue
+
+        break
 
     if userChoice == 1:
         getLaptopStock()
     elif userChoice == 2:
         sellLaptop()
     elif userChoice == 3:
-        getLaptopStock()
+        print(getLaptopStock())
+        print(decorationDash())
+        print(decorationStar())
+        input("Press any key to get back to the main screen")
+
+        welcomeScreenMain()
     else:
         sys.exit("\nProgram Closed\n")
+
+
+# Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
+def getUserInput():
+    while True:
+        try:
+            userChoice = int(input("\nYour choice: "))
+            return userChoice
+
+        except ValueError:
+            print("\nSelection Invalid, please try again!\n")
+            print(decorationDash())
 
 
 def getLaptopStock():
