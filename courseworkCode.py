@@ -1,10 +1,18 @@
 # Python coursework dibbeshwor acharya
 
+def decorationStar():
+    return ("**********************************************************************")
+
+
+def decorationDash():
+    return ("----------------------------------------------------------------------")
+
+
 # Welcome screen section
-print("**********************************************************************")
+print(decorationStar())
 print("\t\t\tLaptop Sales/Purchase")
-print("**********************************************************************")
-print("----------------------------------------------------------------------")
+print(decorationStar())
+print(decorationDash())
 
 print("Please choose the required option")
 print("\n")
@@ -12,8 +20,8 @@ print("\n")
 print("1. Laptop Sales")
 print("2. Laptop Purcahse")
 print("3. Exit the program")
-print("----------------------------------------------------------------------")
-print("**********************************************************************")
+print(decorationDash())
+print(decorationStar())
 print("\n")
 
 while True:
@@ -21,16 +29,20 @@ while True:
         userChoiceWelcomeScreen = int(input("Your choice: "))
         break
     except ValueError:
-        print("Selection Invalid, please try again!")
+        print("\nSelection Invalid, please try again!\n")
+        print(decorationDash())
+
 
 def getLaptopStock():
-    # function to get the stock of current laptop
+    # funciton to return laptop stock
+    return
 
 
 def sellLaptop():
-    # funtion to sell laptops
+    # to sell laptop
+    return
 
 
-# Laptop Sale
-
-# Laptop Purchase
+def purchaseLaptop():
+    # to purchase laptop
+    return
