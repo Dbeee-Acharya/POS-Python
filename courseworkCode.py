@@ -35,7 +35,16 @@ while True:
 
 def getLaptopStock():
     # funciton to return laptop stock
-    return
+    laptopData = open("laptop.txt", "r")
+    laptopDataDictionary = {}
+    laptopArray = []
+
+    laptops = laptopData.readlines()
+
+    for laptop in laptops:
+        laptopArray.append(laptop.replace("\n", "").split(","))
+
+    return laptopArray
 
 
 def sellLaptop():
