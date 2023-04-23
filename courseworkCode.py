@@ -1,14 +1,14 @@
 # Python coursework dibbeshwor acharya
 
-import sys # gives us access to variables used or maintained by the interpreter. Used in this code to call sys.exit() which closes the program
+import sys  # gives us access to variables used or maintained by the interpreter. Used in this code to call sys.exit() which closes the program
 
 
 def decorationStar():
-    return ("**********************************************************************")
+    return ("***************************************************************************")
 
 
 def decorationDash():
-    return ("----------------------------------------------------------------------")
+    return ("---------------------------------------------------------------------------")
 
 
 # Welcome screen section
@@ -48,21 +48,23 @@ def welcomeScreenMain():
     elif userChoice == 3:
         print(decorationStar())
         print(decorationDash())
+
         print(getLaptopStock())
         print(decorationDash())
+
         print(decorationStar())
         input("Press any key to get back to the main screen")  # waiting for user input
 
         welcomeScreenMain()  # calls the main screen again
     else:
-        sys.exit("\nProgram Closed\n")
+        sys.exit("\nProgram Closed\n")  # exits the program with the specific message
 
 
 # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
 def getUserInput():
     while True:
         try:
-            userChoice = int(input("\nYour choice: "))
+            userChoice = int(input("Your choice: "))
             return userChoice
 
         except ValueError:
