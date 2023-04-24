@@ -1,7 +1,5 @@
 # Python coursework dibbeshwor acharya
 
-import sys  # gives us access to variables used or maintained by the interpreter. Used in this code to call sys.exit() which closes the program
-
 
 def decorationStar():
     return ("***************************************************************************")
@@ -32,7 +30,7 @@ def welcomeScreenMain():
     print("\n")
 
     while True:
-        userChoice = getUserInput()
+        userChoice = getUserInputInt()
 
         if userChoice < 1 or userChoice > 4:
             print("\nSelection Invalid, please try again!\n")
@@ -57,11 +55,11 @@ def welcomeScreenMain():
 
         welcomeScreenMain()  # calls the main screen again
     else:
-        sys.exit("\nProgram Closed\n")  # exits the program with the specific message
+        exit("\nProgram Closed\n")
 
 
 # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
-def getUserInput():
+def getUserInputInt():
     while True:
         try:
             userChoice = int(input("Your choice: "))
@@ -76,14 +74,15 @@ def getLaptopStock():
     # funciton to return laptop stock
     laptopData = open("laptop.txt", "r")
     laptopDataDictionary = {}
-    laptopArray = []
+    laptopID = 1
 
-    laptops = laptopData.readlines()
+    for laptops in laptopData:
+        laptops = laptops.replace("\n", "")
+        laptopDataDictionary.update({laptopID: laptops.split(",")})
+        laptopID += 1
+    laptopData.close()
 
-    for laptop in laptops:
-        laptopArray.append(laptop.replace("\n", "").split(","))
-
-    return laptopArray
+    return laptopDataDictionary
 
 
 def sellLaptop():
