@@ -17,4 +17,4 @@ def decorationTilde():
 
 
 def headerDisplay():
-    return ("I.D. ~ Brand ~ Model ~ CPU ~ GPU ~ Storage ~ RAM ~ Price ~ Stock")
+    return ("| S.N. ~ I.D. ~ Brand ~ Model ~ CPU ~ GPU ~ Storage ~ RAM ~ Price ~ Stock |")

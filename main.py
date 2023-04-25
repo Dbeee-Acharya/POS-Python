@@ -4,6 +4,7 @@ import decorations  # Decorations
 import getStock  # Module that returns the stock details
 import userInput  # module that handles userInput
 import spaceCalculation  # module to calculate the required space
+import displayStock  # module to display the stock in an orgonized manner
 
 
 # Welcome screen section
@@ -41,17 +42,7 @@ def welcomeScreenMain():
     elif userChoice == 2:
         exit()
     elif userChoice == 3:
-        print("\n")
-        print(decorations.decorationDash())
-        print(decorations.decorationStar())
-
-        print(decorations.headerDisplay())
-        print(decorations.decorationDash())
-        print(getStock.getLaptopStock())
-        print(decorations.decorationDash())
-
-        print(decorations.decorationStar())
-        input("Press any key to get back to the main screen")  # waiting for user input
+        displayStock.display()
 
         welcomeScreenMain()  # calls the main screen again
     else:

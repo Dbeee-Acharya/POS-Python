@@ -8,15 +8,9 @@ def getLaptopStock():
     laptopFileArray = []
 
     for laptops in laptopFile:
-        laptops.replace("\n", "")
+        laptops = laptops.replace("\n", "").split(",")
         laptopFileArray.append(laptops)
 
     laptopFile.close()
-
-    '''for laptops in laptopData:
-        laptops = laptops.replace("\n", "")
-        laptopDataDictionary.update({laptopID: laptops.split(",")})
-        laptopID += 1
-    laptopData.close()'''
 
     return laptopFileArray
