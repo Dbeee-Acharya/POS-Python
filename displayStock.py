@@ -28,7 +28,7 @@ def display():
         for j in range(len(currentStock[i])):
             string += "| " + str(currentStock[i][j]) + (" "*(requiredSpaces[j] - len(currentStock[i][j])) + defaultSpace)
 
-        print(string + " |")
+        print(string)
         serialNumber += 1
 
     print(decorations.decorationDash())
