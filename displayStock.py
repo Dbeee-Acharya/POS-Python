@@ -11,7 +11,7 @@ def display():
     currentStock = getStock.getLaptopStock()  # 2d array containing current stock of laptop is stored 
     requiredSpaces = spaceCalculation.stockDisplaySpace(currentStock)  # array of required spaces 
 
-    defaultSpace = "   "  # default distance between info while displaying
+    defaultSpace = " "  # default distance between info while displaying
 
     print("\n")
     print(decorations.decorationDash())
@@ -20,11 +20,9 @@ def display():
     print(decorations.headerDisplay())
     print(decorations.decorationDash())
 
-    print(requiredSpaces)
-
     for i in range(len(currentStock)):
         string = ""
-        string += "| " + str(serialNumber) + defaultSpace
+        string += "| " + str(serialNumber) + "   "
         for j in range(len(currentStock[i])):
             string += "| " + str(currentStock[i][j]) + (" "*(requiredSpaces[j] - len(currentStock[i][j])) + defaultSpace)
 
