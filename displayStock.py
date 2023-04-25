@@ -2,11 +2,14 @@
 
 import decorations
 import getStock
+import spaceCalculation
 
 
 def display():
 
     serialNumber = 1
+    currentStock = getStock.getLaptopStock()
+    requiredSpaces = spaceCalculation.stockDisplaySpace(currentStock)
 
     print("\n")
     print(decorations.decorationDash())
@@ -14,7 +17,7 @@ def display():
 
     print(decorations.headerDisplay())
     print(decorations.decorationDash())
-    print(getStock.getLaptopStock())
+    print(currentStock)
     print(decorations.decorationDash())
 
     print(decorations.decorationStar())
