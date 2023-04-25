@@ -3,17 +3,20 @@
 
 def getLaptopStock():
     # funciton to return laptop stock
-    laptopData = open("laptop.txt", "r")
-    laptopDataDictionary = {}
-    laptopID = 1
+    laptopFile = open("laptop.txt", "r")
+    # laptopDataDictionary = {}
+    laptopFileArray = []
 
-    for laptops in laptopData:
+    for laptops in laptopFile:
+        laptops.replace("\n", "")
+        laptopFileArray.append(laptops)
+
+    laptopFile.close()
+
+    '''for laptops in laptopData:
         laptops = laptops.replace("\n", "")
-        laptopDataDictionary.update({laptopID: laptops})
+        laptopDataDictionary.update({laptopID: laptops.split(",")})
         laptopID += 1
-    laptopData.close()
+    laptopData.close()'''
 
-    return laptopDataDictionary
-
-
-print(getLaptopStock())
+    return laptopFileArray

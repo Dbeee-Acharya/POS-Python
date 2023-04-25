@@ -3,16 +3,17 @@
 import decorations  # Decorations
 import getStock  # Module that returns the stock details
 import userInput  # module that handles userInput
+import spaceCalculation  # module to calculate the required space
 
 
 # Welcome screen section
 def welcomeScreenMain():
     print("\n")
+    print(decorations.decorationTilde())
     print(decorations.decorationDash())
-    print(decorations.decorationStar())
-    print("\t\t\tLaptop Sales/Purchase")
-    print(decorations.decorationStar())
+    print(spaceCalculation.singleString(decorations.decorationDash(), "Laptop Sales/Purchase"))
     print(decorations.decorationDash())
+    print(decorations.decorationTilde())
 
     print("Please choose the required option")
     print("\n")
@@ -38,13 +39,14 @@ def welcomeScreenMain():
     if userChoice == 1:
         getStock.getLaptopStock()
     elif userChoice == 2:
-        getStock.sellLaptop()
+        exit()
     elif userChoice == 3:
-        print(decorations.decorationStar())
+        print("\n")
         print(decorations.decorationDash())
+        print(decorations.decorationStar())
 
-        # print(getLaptopStock())
         print(decorations.headerDisplay())
+        print(decorations.decorationDash())
         print(getStock.getLaptopStock())
         print(decorations.decorationDash())
 
