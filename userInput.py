@@ -1,9 +1,9 @@
 # This module handles all userInput functions
-import decorations.py  # for decorations
+import decorations  # for decorations
 
 
 # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
-def getUserInputInt():
+def getUserInput_Int():
     while True:
         try:
             userChoice = int(input("Your choice: "))

@@ -1,8 +1,8 @@
 # Python coursework dibbeshwor acharya
 
-import decorations.py  # Decorations
-import getStock.py  # Module that returns the stock details
-import userInput.py  # module that handles userInput
+import decorations  # Decorations
+import getStock  # Module that returns the stock details
+import userInput  # module that handles userInput
 
 
 # Welcome screen section
@@ -26,7 +26,7 @@ def welcomeScreenMain():
     print("\n")
 
     while True:
-        userChoice = userInput.getUserInputInt()
+        userChoice = userInput.getUserInput_Int()
 
         if userChoice < 1 or userChoice > 4:
             print("\nSelection Invalid, please try again!\n")
@@ -45,7 +45,7 @@ def welcomeScreenMain():
 
         # print(getLaptopStock())
         print(decorations.headerDisplay())
-        getStock.getLaptopStock()
+        print(getStock.getLaptopStock())
         print(decorations.decorationDash())
 
         print(decorations.decorationStar())
