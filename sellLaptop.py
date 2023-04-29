@@ -37,6 +37,7 @@ def sellLaptopMain():
         if (confirmToBuy == "yes" or confirmToBuy == "no"):
             if confirmToBuy == "yes":
                 print("yes")
+                decreaseStock(laptopToBuy, quantityOfLaptop, laptopList)
                 generateBill(laptopToBuy, quantityOfLaptop, laptopList)
                 break
             print("\n Operation Cancelled")
@@ -45,7 +46,7 @@ def sellLaptopMain():
         print("please type yes or No")
         print(decorations.decorationDash())
 
-def generateBill(laptop, quantity, list):
+def decreaseStock(laptop, quantity, list):
     file = open("laptop.txt","w")
     
     for i in range(len(list)):
@@ -63,5 +64,7 @@ def generateBill(laptop, quantity, list):
     file.close()
     return
 
-#generateBill(1, 1)
+def generateBill(laptop, quantity, list):
+    
+    return
         
