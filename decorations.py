@@ -21,7 +21,7 @@ def headerDisplay():
     currentStockSpace = operations.stockDisplaySpace(operations.getLaptopStock())  # storing the space required for current stock in an array
     defaultSpace = " "
 
-    headers = ["S.N.", "I.D.", "Company", "Model", "Processor", "GPU", "RAM", "Storage", "Price", "Stock"]
+    headers = ["I.D.", "SKU", "Company", "Model", "Processor", "GPU", "RAM", "Storage", "Price", "Stock"]
     header = "| " + headers[0]
 
     for i in range(1, len(headers)):

@@ -25,15 +25,20 @@ def stockDisplaySpace(stock):
 '''TO take user input with try catch'''
 
 # Takes userInput for desired choice. Any out of bounds choice or Invalid choice is error handled
-def getUserInput_Int():
+def getUserInput_Int(message):
     while True:
         try:
-            userChoice = int(input("Your choice: "))
+            userChoice = int(input(message))
             return userChoice
 
         except ValueError:
             print("\nSelection Invalid, please try again!\n")
             print(decorations.decorationDash())
+
+# userinput for string
+def getUserInput_String(message):
+        userChoice = input(message)
+        return userChoice
 
 '''To take stock from the laptop.txt file'''
 
@@ -78,6 +83,5 @@ def display():
         serialNumber += 1
 
     print(decorations.decorationDash())
-
     print(decorations.decorationStar())
-    input("Press any key to get back to the main screen")  # waiting for user input 
+    return
