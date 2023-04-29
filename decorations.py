@@ -1,6 +1,5 @@
 # This module contains all the decorations used in the program
-import spaceCalculation
-import getStock
+import operations
 
 
 def decorationStar():
@@ -19,7 +18,7 @@ def decorationTilde():
 
 
 def headerDisplay():
-    currentStockSpace = spaceCalculation.stockDisplaySpace(getStock.getLaptopStock())  # storing the space required for current stock in an array
+    currentStockSpace = operations.stockDisplaySpace(operations.getLaptopStock())  # storing the space required for current stock in an array
     defaultSpace = " "
 
     headers = ["S.N.", "I.D.", "Company", "Model", "Processor", "GPU", "RAM", "Storage", "Price", "Stock"]

@@ -1,18 +1,14 @@
 # Python coursework dibbeshwor acharya
 
 import decorations  # Decorations
-import getStock  # Module that returns the stock details
-import userInput  # module that handles userInput
-import spaceCalculation  # module to calculate the required space
-import displayStock  # module to display the stock in an orgonized manner
-
+import operations # all the required operations 
 
 # Welcome screen section
 def welcomeScreenMain():
     print("\n")
     print(decorations.decorationTilde())
     print(decorations.decorationDash())
-    print(spaceCalculation.singleString(decorations.decorationDash(), "Laptop Sales/Purchase"))
+    print(operations.singleString(decorations.decorationDash(), "Laptop Sales/Purchase"))
     print(decorations.decorationDash())
     print(decorations.decorationTilde())
 
@@ -28,7 +24,7 @@ def welcomeScreenMain():
     print("\n")
 
     while True:
-        userChoice = userInput.getUserInput_Int()
+        userChoice = operations.getUserInput_Int()
 
         if userChoice < 1 or userChoice > 4:
             print("\nSelection Invalid, please try again!\n")
@@ -38,11 +34,11 @@ def welcomeScreenMain():
         break
 
     if userChoice == 1:
-        getStock.getLaptopStock()
+        operations.getLaptopStock()
     elif userChoice == 2:
         exit()
     elif userChoice == 3:
-        displayStock.display()
+        operations.display()
 
         welcomeScreenMain()  # calls the main screen again
     else:
