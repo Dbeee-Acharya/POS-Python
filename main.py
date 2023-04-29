@@ -37,10 +37,19 @@ def welcomeScreenMain():
             break
         
         if userChoice == 1:
-            print(decorations.decorationDash())
-            operations.display()
+            while True:
+                print(decorations.decorationDash())
+                operations.display()
 
-            sellLaptop.sellLaptopMain()
+                sellLaptop.sellLaptopMain()
+
+                print(decorations.decorationTilde())
+                print(decorations.decorationDash())
+                toContinue = operations.getUserInput_String("Do you want to sell more?(yes / any other key to discontinue): ")
+                toContinue = toContinue.lower()
+
+                if (toContinue != "yes"):
+                    break
 
         elif userChoice == 2:
             exit()

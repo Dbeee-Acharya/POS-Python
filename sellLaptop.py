@@ -37,7 +37,7 @@ def sellLaptopMain():
         if (confirmToBuy == "yes" or confirmToBuy == "no"):
             if confirmToBuy == "yes":
                 print("yes")
-                generateBill(laptopToBuy, quantityOfLaptop)
+                generateBill(laptopToBuy, quantityOfLaptop, laptopList)
                 break
             print("\n Operation Cancelled")
             break
@@ -45,7 +45,23 @@ def sellLaptopMain():
         print("please type yes or No")
         print(decorations.decorationDash())
 
-def generateBill(laptop, quantity):
+def generateBill(laptop, quantity, list):
+    file = open("laptop.txt","w")
     
+    for i in range(len(list)):
+        if i == laptop:
+            file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
+                        + "," + list[i][6] + "," + list[i][7] + ", " + str(int(list[i][8]) - quantity) + "\n")
+            continue
+        elif i == len(list) - 1:
+            file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
+                         + "," + list[i][6] + "," + list[i][7] + "," + list[i][8])
+            continue
+        file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
+                    + "," + list[i][6] + "," + list[i][7] + "," + list[i][8] + "\n")
+        
+    file.close()
     return
+
+#generateBill(1, 1)
         
