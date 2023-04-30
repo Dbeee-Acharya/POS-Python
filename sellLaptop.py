@@ -86,7 +86,7 @@ def generateBill(laptopIndex, quantity, list):
     customerPhone = str(customerPhone)
 
     while True:
-        wantShipping = operations.getUserInput_String("Do you want shipping?(yes/no)")
+        wantShipping = operations.getUserInput_String("Do you want shipping for Rs.500?(yes/no)")
         wantShipping = wantShipping.lower() 
         if wantShipping != "yes" or wantShipping != "no":
             print("\n")
@@ -104,21 +104,51 @@ def generateBill(laptopIndex, quantity, list):
         print("\n You are trying to concatenate integer with a string")
     
     bill = open(str(billID) + ".txt", "w")
-    bill.close()
 
-    bill = open(str(billID) + ".txt", "w")
-
+    
     bill.write(decorations.decorationTilde() + "\n")
     bill.write(decorations.decorationDash() + "\n")
     bill.write(str(dateAndTime) + "\n")
-    bill.write("\t\t Laptop Purchase Bill \n")
+    bill.write("Laptop Purchase Bill \n")
+    bill.write(decorations.decorationDash() + "\n")
+    bill.write("Generic Laptop Shop\n")
+    bill.write("Lagankhel, Lalitpur\n")
+    bill.write(decorations.decorationTilde() + "\n")
+    bill.write(decorations.decorationDash() + "\n")
     bill.write("Name: " + customerName + "\n")
     bill.write("Phone: " + str(customerPhone) + "\n")
-    bill.write(decorations.decorationTilde() + "\n")
+    bill.write(decorations.decorationDash() + "\n")
+    bill.write("S.N. \t | Company \t | Model \t | Quantity \t | Price \t | Total\n")
     bill.write(decorations.decorationDash() + "\n")
 
 
+    totalPrice = 0
+
+    for i in range(len(laptopIndex)):
+        bill.append(
+            "| " + str(i + 1) + " | " + str(list[laptopIndex[i]][1]) + " | "
+            + str(list[laptopIndex[i]][2]) + " | " + str(quantity[i])
+            + " | " + str(list[laptopIndex[i]][7]) + " | " + str((int(list[laptopIndex[i]][7]) * int(quantity[i]))) + "\n")
+        totalPrice += int(list[laptopIndex[i]][7]) * int(quantity[i])
+
+    bill.write(decorations.decorationTilde() + "\n")
+    bill.write(decorations.decorationDash() + "\n")
+    
+    if wantShipping:
+        wantShipping = 500
+    else:
+        wantShipping = 0
+    
+    bill.write("Shipping Cost: Rs." + str(wantShipping) + "\n")
+    bill.write("Price of laptop: Rs." + str(totalPrice) + "\n")
+    bill.write("Grand Total: Rs." + str(totalPrice + wantShipping) + "\n")
+
+    bill.write(decorations.decorationDash() + "\n")
+    bill.write(decorations.decorationTilde())
+
     bill.close()
+    print("\nBill generated Successfully!")
+    input("\npress any key to get back to the main screen")
     
     return
         
