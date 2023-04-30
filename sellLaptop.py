@@ -2,49 +2,62 @@ import decorations, operations, datetime
 
 
 def sellLaptopMain():
-    laptopList = operations.getLaptopStock()
     while True:
-        laptopToBuy = (operations.getUserInput_Int("\nLaptop ID: ")) -1
+        laptopsBoughtIndex = []
+        quantityBought = []
+        laptopList = operations.getLaptopStock()
+        while True:
+            laptopToBuy = (operations.getUserInput_Int("\nLaptop ID: ")) -1
 
-        if not(laptopToBuy < 0 or laptopToBuy > len(laptopList) - 1):
-            break
-        print(decorations.decorationDash()) 
-        print("Invalid ID")
-        print(decorations.decorationDash())
+            if not(laptopToBuy < 0 or laptopToBuy > len(laptopList) - 1):
+                break
+            print(decorations.decorationDash()) 
+            print("Invalid ID")
+            print(decorations.decorationDash())
 
-    print(decorations.decorationTilde())
-    print(decorations.decorationDash())
-
-    while True:
-        quantityOfLaptop = operations.getUserInput_Int("Quantity of Laptop to buy: ")
-        
-        if not(quantityOfLaptop < 0 or quantityOfLaptop > int(laptopList[laptopToBuy][8])):
-            break 
-        print(decorations.decorationDash()) 
-        print("Invalid quantity")
-        print(decorations.decorationDash())
-
-        print("\n")
         print(decorations.decorationTilde())
         print(decorations.decorationDash())
 
-    print(decorations.decorationDash())
-    print(f"Are you sure you want to buy {quantityOfLaptop} pieces of {laptopList[laptopToBuy][0]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])}")
+        while True:
+            quantityOfLaptop = operations.getUserInput_Int("Quantity of Laptop to buy: ")
+            
+            if not(quantityOfLaptop < 0 or quantityOfLaptop > int(laptopList[laptopToBuy][8])):
+                break 
+            print(decorations.decorationDash()) 
+            print("Invalid quantity")
+            print(decorations.decorationDash())
 
-    while True:
-        confirmToBuy = (operations.getUserInput_String("Yes/No?: "))
-        confirmToBuy = confirmToBuy.lower()
-        if (confirmToBuy == "yes" or confirmToBuy == "no"):
-            if confirmToBuy == "yes":
-                print("yes")
-                decreaseStock(laptopToBuy, quantityOfLaptop, laptopList)
-                generateBill(laptopToBuy, quantityOfLaptop, laptopList)
+            print("\n")
+            print(decorations.decorationTilde())
+            print(decorations.decorationDash())
+
+        print(decorations.decorationDash())
+        print(f"Are you sure you want to buy {quantityOfLaptop} pieces of {laptopList[laptopToBuy][0]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])}")
+
+        while True:
+            confirmToBuy = (operations.getUserInput_String("Yes/No?: "))
+            if (confirmToBuy == "yes" or confirmToBuy == "no"):
+                if confirmToBuy == "yes":
+                    print("yes")
+                    decreaseStock(laptopToBuy, quantityOfLaptop, laptopList)
+                    laptopsBoughtIndex.append(laptopToBuy)
+                    quantityBought.append(quantityOfLaptop)
+                    print(f" {quantityOfLaptop} pieces of {laptopList[laptopToBuy][0]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])} added to bill")
+                    # generateBill(laptopToBuy, quantityOfLaptop, laptopList)
                 break
-            print("\n Operation Cancelled")
+            else: 
+                print("\n Operation Cancelled")
+                break
+            
+        print(decorations.decorationDash())
+        buyMore = operations.getUserInput_String("Do you want to buy more?:(yes/any other key to cancel)")
+        print(decorations.decorationDash())
+        buyMore = buyMore.lower()
+
+        if buyMore != "yes":
             break
-        print(decorations.decorationDash())
-        print("please type yes or No")
-        print(decorations.decorationDash())
+
+    generateBill(laptopsBoughtIndex, quantityBought, laptopList)
 
 def decreaseStock(laptop, quantity, list):
     file = open("laptop.txt","w")
@@ -64,7 +77,48 @@ def decreaseStock(laptop, quantity, list):
     file.close()
     return
 
-def generateBill(laptop, quantity, list):
+def generateBill(laptopIndex, quantity, list):
+    dateAndTime = datetime.datetime.now()
+
+    customerName = operations.getUserInput_String("Customer Name: ")
+    customerName = customerName.lower()
+    customerPhone = operations.getUserInput_Int("Phone Number: ")
+    customerPhone = str(customerPhone)
+
+    while True:
+        wantShipping = operations.getUserInput_String("Do you want shipping?(yes/no)")
+        wantShipping = wantShipping.lower() 
+        if wantShipping != "yes" or wantShipping != "no":
+            print("\n")
+            print("Please type yes or no")
+            print(decorations.decorationDash())
+
+        if wantShipping == "yes":
+            wantShipping = True
+        else:
+            wantShipping = False
+        break
+    try:
+        billID = str(dateAndTime).replace(" ", "_").replace(":", "_") + "-" + customerName + "-" +  str(customerPhone)
+    except ValueError:
+        print("\n You are trying to concatenate integer with a string")
+    
+    bill = open(str(billID) + ".txt", "w")
+    bill.close()
+
+    bill = open(str(billID) + ".txt", "w")
+
+    bill.write(decorations.decorationTilde() + "\n")
+    bill.write(decorations.decorationDash() + "\n")
+    bill.write(str(dateAndTime) + "\n")
+    bill.write("\t\t Laptop Purchase Bill \n")
+    bill.write("Name: " + customerName + "\n")
+    bill.write("Phone: " + str(customerPhone) + "\n")
+    bill.write(decorations.decorationTilde() + "\n")
+    bill.write(decorations.decorationDash() + "\n")
+
+
+    bill.close()
     
     return
         

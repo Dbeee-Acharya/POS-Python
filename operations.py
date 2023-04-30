@@ -38,7 +38,7 @@ def getUserInput_Int(message):
 # userinput for string
 def getUserInput_String(message):
         userChoice = input(message)
-        return userChoice
+        return userChoice.lower()
 
 '''To take stock from the laptop.txt file'''
 
@@ -55,6 +55,16 @@ def getLaptopStock():
     laptopFile.close()
 
     return laptopFileArray
+
+'''to get the price list of laptops'''
+def getLaptopPrice():
+    laptopList = getLaptopStock()
+    priceList = []
+
+    for laptops in laptopList:
+        priceList.append(laptops[7])
+
+    return priceList
 
 '''To display the stock'''
 
