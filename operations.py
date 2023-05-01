@@ -66,6 +66,16 @@ def getLaptopPrice():
 
     return priceList
 
+'''To get the SKU of laptop'''
+def getLaptopSKU():
+    laptopList = getLaptopStock()
+    skuList = []
+
+    for laptops in laptopList:
+        skuList.append(laptops[0].lower())
+
+    return skuList
+
 '''To display the stock'''
 
 def display():
