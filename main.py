@@ -3,6 +3,7 @@
 import decorations  # Decorations
 import operations # all the required operations 
 import sellLaptop # all functions relating to sales of laptop
+# import purchaseLaptop # all the functions relating to the purchase of laptop
 
 # Welcome screen section
 
@@ -46,11 +47,13 @@ def welcomeScreenMain():
             print(decorations.decorationDash())
                 
         elif userChoice == 2:
+            # purchaseLaptop.purchaseLaptopMain()  # calling the purchase function
             exit()
         elif userChoice == 3:
             operations.display()
             input("Press any key to get back to the main screen")  # waiting for user input 
             welcomeScreenMain()  # calls the main screen again
+
         else:
             exit("\nProgram Closed\n")
 

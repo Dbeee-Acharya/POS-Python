@@ -4,6 +4,7 @@ import decorations, operations, datetime
 def sellLaptopMain():
     laptopsBoughtIndex = []
     quantityBought = []
+
     while True:
         laptopList = operations.getLaptopStock()
         while True:
@@ -32,7 +33,7 @@ def sellLaptopMain():
             print(decorations.decorationDash())
 
         print(decorations.decorationDash())
-        print(f"Are you sure you want to buy {quantityOfLaptop} pieces of {laptopList[laptopToBuy][0]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])}")
+        print(f"Are you sure you want to buy {quantityOfLaptop} pieces of {laptopList[laptopToBuy][2]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])}")
 
         while True:
             confirmToBuy = (operations.getUserInput_String("Yes/No?: "))
@@ -58,6 +59,7 @@ def sellLaptopMain():
             break
 
     generateBill(laptopsBoughtIndex, quantityBought, laptopList)
+    return
 
 def decreaseStock(laptop, quantity, list):
     file = open("laptop.txt","w")
