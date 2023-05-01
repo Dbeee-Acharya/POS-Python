@@ -2,9 +2,9 @@ import decorations, operations, datetime
 
 
 def sellLaptopMain():
+    laptopsBoughtIndex = []
+    quantityBought = []
     while True:
-        laptopsBoughtIndex = []
-        quantityBought = []
         laptopList = operations.getLaptopStock()
         while True:
             laptopToBuy = (operations.getUserInput_Int("\nLaptop ID: ")) -1
@@ -50,7 +50,7 @@ def sellLaptopMain():
                 break
             
         print(decorations.decorationDash())
-        buyMore = operations.getUserInput_String("Do you want to buy more?:(yes/any other key to cancel)")
+        buyMore = operations.getUserInput_String("Do you want to buy more?(yes/any other key to cancel): ")
         print(decorations.decorationDash())
         buyMore = buyMore.lower()
 
@@ -86,9 +86,9 @@ def generateBill(laptopIndex, quantity, list):
     customerPhone = str(customerPhone)
 
     while True:
-        wantShipping = operations.getUserInput_String("Do you want shipping for Rs.500?(yes/no)")
+        wantShipping = operations.getUserInput_String("Do you want shipping for Rs.500?(yes/no): ")
         wantShipping = wantShipping.lower() 
-        if wantShipping != "yes" or wantShipping != "no":
+        if wantShipping != "yes" and wantShipping != "no":
             print("\n")
             print("Please type yes or no")
             print(decorations.decorationDash())
@@ -125,10 +125,10 @@ def generateBill(laptopIndex, quantity, list):
     totalPrice = 0
 
     for i in range(len(laptopIndex)):
-        bill.append(
-            "| " + str(i + 1) + " | " + str(list[laptopIndex[i]][1]) + " | "
-            + str(list[laptopIndex[i]][2]) + " | " + str(quantity[i])
-            + " | " + str(list[laptopIndex[i]][7]) + " | " + str((int(list[laptopIndex[i]][7]) * int(quantity[i]))) + "\n")
+        bill.write(
+            "| " + str(i + 1) + "\t| " + str(list[laptopIndex[i]][1]) + "\t| "
+            + str(list[laptopIndex[i]][2]) + "\t| " + str(quantity[i])
+            + "\t| " + str(list[laptopIndex[i]][7]) + "\t| " + str((int(list[laptopIndex[i]][7]) * int(quantity[i]))) + "\n")
         totalPrice += int(list[laptopIndex[i]][7]) * int(quantity[i])
 
     bill.write(decorations.decorationTilde() + "\n")
@@ -141,14 +141,20 @@ def generateBill(laptopIndex, quantity, list):
     
     bill.write("Shipping Cost: Rs." + str(wantShipping) + "\n")
     bill.write("Price of laptop: Rs." + str(totalPrice) + "\n")
-    bill.write("Grand Total: Rs." + str(totalPrice + wantShipping) + "\n")
+    bill.write("Taxable Amount: Rs." + str(totalPrice + wantShipping) + "\n")
+    vatAmount = float((totalPrice + wantShipping) * 13/100)
+    bill.write("13% Vat Amount: Rs." + str(vatAmount) + "\n")
+    bill.write("Grand Total: Rs." + str(vatAmount + totalPrice + wantShipping) +"\n")
+    
 
     bill.write(decorations.decorationDash() + "\n")
     bill.write(decorations.decorationTilde())
 
     bill.close()
-    print("\nBill generated Successfully!")
-    input("\npress any key to get back to the main screen")
+    print("\nBill generated Successfully!\n")
+    print(decorations.decorationStar())
+    print(decorations.decorationDash())
+    input("press any key to get back to the main screen")
     
     return
         
