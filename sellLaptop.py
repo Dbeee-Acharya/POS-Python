@@ -1,7 +1,16 @@
+'''
+This function is called when the user wants to sell laptop to the client
+'''
+
 import decorations, operations, datetime
 
 
 def sellLaptopMain():
+    '''
+    Asks user for which laptop to sell, which is then input validated
+    Then calls the update quantity function which updates the quantity from the txt file
+    Then Generates a bill using the bill generation function
+    '''
     laptopsBoughtIndex = []
     quantityBought = []
 
@@ -62,6 +71,13 @@ def sellLaptopMain():
     return
 
 def decreaseStock(laptop, quantity, list):
+    '''
+    Takes three parameters, laptops bought a list containing indexes of the laptop bought by the user
+    quantity, a list containing the quantity bought for the respective index of laptops list
+    list, a 2d list containing the current laptop stock
+    Loops and writes the file
+    '''
+
     file = open("laptop.txt","w")
     
     for i in range(len(list)):
@@ -79,7 +95,15 @@ def decreaseStock(laptop, quantity, list):
     file.close()
     return
 
+
 def generateBill(laptopIndex, quantity, list):
+    '''
+    Takes Three parameters, LaptopIndex is a list containing the indexes of laptops bought
+    quantity is a list containing the quantity bought of the respective index of laptopIndex
+    list is a 2d list containing the current stock
+    Bill is generated and stored in the bill folder
+    '''
+
     dateAndTime = datetime.datetime.now()
 
     customerName = operations.getUserInput_String("Customer Name: ")
