@@ -52,7 +52,7 @@ def sellLaptopMain():
                     decreaseStock(laptopToBuy, quantityOfLaptop, laptopList)
                     laptopsBoughtIndex.append(laptopToBuy)
                     quantityBought.append(quantityOfLaptop)
-                    print(f" {quantityOfLaptop} pieces of {laptopList[laptopToBuy][0]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])} added to bill")
+                    print(f" {quantityOfLaptop} pieces of {laptopList[laptopToBuy][2]} for ${quantityOfLaptop * int(laptopList[laptopToBuy][7])} added to bill")
                     # generateBill(laptopToBuy, quantityOfLaptop, laptopList)
                 break
             else: 
@@ -68,6 +68,8 @@ def sellLaptopMain():
             break
 
     generateBill(laptopsBoughtIndex, quantityBought, laptopList)
+    print(summaryOfSales(laptopsBoughtIndex, quantityBought, laptopList))
+    input("press any key to continue")
     return
 
 def decreaseStock(laptop, quantity, list):
@@ -82,15 +84,18 @@ def decreaseStock(laptop, quantity, list):
     
     for i in range(len(list)):
         if i == laptop:
+            # file.write(",".join(list[i]) + "\n")
             file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
                         + "," + list[i][6] + "," + list[i][7] + ", " + str(int(list[i][8]) - quantity) + "\n")
             continue
         elif i == len(list) - 1:
-            file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
-                         + "," + list[i][6] + "," + list[i][7] + "," + list[i][8])
+            file.write(",".join(list[i]))
+            # file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
+            #              + "," + list[i][6] + "," + list[i][7] + "," + list[i][8])
             continue
-        file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
-                    + "," + list[i][6] + "," + list[i][7] + "," + list[i][8] + "\n")
+        file.write(",".join(list[i]) + "\n")
+        # file.write(list[i][0] + "," + list[i][1] + "," + list[i][2] + "," + list[i][3] + "," + list[i][4] + "," + list[i][5]
+        #             + "," + list[i][6] + "," + list[i][7] + "," + list[i][8] + "\n")
         
     file.close()
     return
@@ -125,11 +130,11 @@ def generateBill(laptopIndex, quantity, list):
             wantShipping = False
         break
     try:
-        billID = str(dateAndTime).replace(" ", "_").replace(":", "_") + "-" + customerName + "-" +  str(customerPhone)
+        billID = customerName + "_" + str(dateAndTime).replace(" ", "_").replace(":", "_") + "-" +  "-" +  str(customerPhone)
     except ValueError:
         print("\n You are trying to concatenate integer with a string")
     
-    bill = open(str(billID) + ".txt", "w")
+    bill = open("./bills/"+billID + ".txt", "w")
 
     
     bill.write(decorations.decorationTilde() + "\n")
@@ -180,7 +185,43 @@ def generateBill(laptopIndex, quantity, list):
     print("\nBill generated Successfully!\n")
     print(decorations.decorationStar())
     print(decorations.decorationDash())
-    input("press any key to get back to the main screen")
     
     return
+
+
+def summaryOfSales(laptopIndex, quantity, list):
+    '''
+    This function takes the index of laptops bought, quantity bought and a list containing the current stock
+    and returns a summary of the transaction carried out by the user stored in a string
+    '''
+    summary = ""
+    totalPrice = 0
+
+    summary += "Summary of bill \n"
+    summary += decorations.decorationStar() + "\n" + decorations.decorationDash() + "\n"
+    summary += "S.N|\t|Product |\t|Quantity |\t|Price   |\t\t| Total\n"
+
+    for i in range(len(laptopIndex)):
+        summary += (
+            "| " + str(i+1) + "\t| " + str(list[laptopIndex[i]][1]) + "\t| "
+            + str(list[laptopIndex[i]][2]) + "\t| " + str(quantity[i])
+            + "\t| " + str(list[laptopIndex[i]][7]) + "\t| " + str((int(list[laptopIndex[i]][7]) * int(quantity[i]))) + "\n\n")
+        totalPrice += int(list[laptopIndex[i]][7]) * int(quantity[i])
+
+    summary += decorations.decorationDash() + "\n"
+    summary += ("Price of laptop: Rs." + str(totalPrice) + "\n")
+    summary += ("Taxable Amount: Rs." + str(totalPrice) + "\n")
+    vatAmount = float((totalPrice) * 13/100)
+    summary += ("13% Vat Amount: Rs." + str(vatAmount) + "\n")
+    summary += ("Grand Total: Rs." + str(vatAmount + totalPrice) +"\n")
+    
+    # for index in laptopIndex:
+    #     summary += str(sn) + " | " + list[index][2] + (" " * (15 - len(list[index][2]))) + "| " + str(quantity[index]) + (" " *(5 - len(str(quantity[index])))) + str() "\n"
+    #     sn += 1
+    
+    summary += decorations.decorationDash() 
+    return summary
+    
+
+
         

@@ -58,11 +58,13 @@ def purchaseLaptopMain():
         
             for i in range(len(laptopList)):
                 if i == len(laptopList) - 1:
-                    file.write(laptopList[i][0] + "," + laptopList[i][1] + "," + laptopList[i][2] + "," + laptopList[i][3] + "," + laptopList[i][4] + "," + laptopList[i][5]
-                                + "," + laptopList[i][6] + "," + laptopList[i][7] + "," + laptopList[i][8])
+                    file.write(",".join(laptopList[i]))
+                    # file.write(laptopList[i][0] + "," + laptopList[i][1] + "," + laptopList[i][2] + "," + laptopList[i][3] + "," + laptopList[i][4] + "," + laptopList[i][5]
+                    #             + "," + laptopList[i][6] + "," + laptopList[i][7] + "," + laptopList[i][8])
                     continue
-                file.write(laptopList[i][0] + "," + laptopList[i][1] + "," + laptopList[i][2] + "," + laptopList[i][3] + "," + laptopList[i][4] + "," + laptopList[i][5]
-                            + "," + laptopList[i][6] + "," + laptopList[i][7] + "," + str(laptopList[i][8]) + "\n")    
+                file.write(",".join(laptopList[i]) + "\n")
+                # file.write(laptopList[i][0] + "," + laptopList[i][1] + "," + laptopList[i][2] + "," + laptopList[i][3] + "," + laptopList[i][4] + "," + laptopList[i][5]
+                #             + "," + laptopList[i][6] + "," + laptopList[i][7] + "," + str(laptopList[i][8]) + "\n")    
             file.close()
 
             print(decorations.decorationDash())
