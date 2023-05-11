@@ -1,4 +1,4 @@
-import decorations
+
 
 # Takes the total length string and the string to write and returns the number of spaces needed
 def singleString(totalString, stringToWrite):
@@ -41,7 +41,7 @@ def getUserInput_Int(message):
 
         except ValueError:
             print("\nSelection Invalid, please try again!\n")
-            print(decorations.decorationDash())
+            print(decorationDash())
 
 
 # userinput for string
@@ -107,11 +107,11 @@ def display():
     defaultSpace = " "  # default distance between info while displaying
 
     print("\n")
-    print(decorations.decorationDash())
-    print(decorations.decorationStar())
+    print(decorationDash())
+    print(decorationStar())
 
-    print(decorations.headerDisplay())
-    print(decorations.decorationDash())
+    print(headerDisplay())
+    print(decorationDash())
 
     for i in range(len(currentStock)):
         string = ""
@@ -122,6 +122,39 @@ def display():
         print(string)
         serialNumber += 1
 
-    print(decorations.decorationDash())
-    print(decorations.decorationStar())
+    print(decorationDash())
+    print(decorationStar())
     return
+
+
+def decorationStar():
+    '''Returns the specified number of star(astrict)'''
+    star = "*"
+    return star * 170
+
+
+def decorationDash():
+    '''Returns the specified number of dashes'''
+    dash = "-"
+    return dash * 170
+
+
+def decorationTilde():
+    '''Returns the specified number of tilde(~)'''
+    tilde = "~"
+    return tilde * 170
+
+
+def headerDisplay():
+    '''Returns the header for displaying stock after calculating the required spaces between the headers by calling the stockDisplaySpace method'''
+    currentStockSpace = stockDisplaySpace(getLaptopStock())  # storing the space required for current stock in an array
+    defaultSpace = " "
+
+    headers = ["I.D.", "SKU", "Company", "Model", "Processor", "GPU", "RAM", "Storage", "Price", "Stock"]
+    header = "| " + headers[0]  # initializing a string to store the final header
+
+    # This loops over the items in header and adds the required spaces after it then concatenates it to the header string
+    for i in range(1, len(headers)):
+        header += "| " + headers[i] + ((currentStockSpace[i-1] - len(headers[i])) * " ") + defaultSpace
+
+    return header

@@ -1,5 +1,5 @@
-XPS 13 9310,  Dell,  XPS 13,  Intel Core i7-1185G7,  Intel Iris Xe,  16GB,  512GB,  209000, 56
-MacBook Pro M2,  Apple,  MacBook Pro,  M2 pro,  M2 GPU,  16GB,  512GB SSD,  236000, 393
-ZenBook UX425EA,  ASUS,  ZenBook,  Intel Core i7-1165G7,  Intel Iris Xe,  16GB,  512GB,  113000, 88
+XPS 13 9310,  Dell,  XPS 13,  Intel Core i7-1185G7,  Intel Iris Xe,  16GB,  512GB,  209000, 100
+MacBook Pro M2,  Apple,  MacBook Pro,  M2 pro,  M2 GPU,  16GB,  512GB SSD,  236000, 200
+ZenBook UX425EA,  ASUS,  ZenBook,  Intel Core i7-1165G7,  Intel Iris Xe,  16GB,  512GB,  113000, 80
 82JQ006JUS,  Lenovo,  Legion 5 Pro,  AMD Ryzen 7 5800H,  NVIDIA RTX 3070,  16GB,  1TB,  194000, 200
-500 PT515-52-73L3,  Acer,  Predator Triton 500,  Intel Core i7-10875H,  NVIDIA RTX 2080 SUPER,  32GB,  1TB,  406000, 88
+500 PT515-52-73L3,  Acer,  Predator Triton 500,  Intel Core i7-10875H,  NVIDIA RTX 2080 SUPER,  32GB,  1TB,  406000, 100

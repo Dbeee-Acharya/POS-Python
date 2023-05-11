@@ -4,7 +4,6 @@ This module has one function welcomeScreenMain(): which is looped until the user
 program
 '''
 
-import decorations  # Decorations
 import operations # all the required operations 
 import sellLaptop # all functions relating to sales of laptop
 import purchaseLaptop # all the functions relating to the purchase of laptop
@@ -15,11 +14,11 @@ def welcomeScreenMain():
     '''This method is run at the very beginning, it prints the required welcome message and asks the user for their choice. This method loops until the user exits the program'''
     while True:
         print("\n")
-        print(decorations.decorationTilde())
-        print(decorations.decorationDash())
-        print(operations.singleString(decorations.decorationDash(), "Laptop Sales/Purchase"))
-        print(decorations.decorationDash())
-        print(decorations.decorationTilde())
+        print(operations.decorationTilde())
+        print(operations.decorationDash())
+        print(operations.singleString(operations.decorationDash(), "Laptop Sales/Purchase"))
+        print(operations.decorationDash())
+        print(operations.decorationTilde())
 
         print("Please choose the required option")
         print("\n")
@@ -28,8 +27,8 @@ def welcomeScreenMain():
         print("2. Laptop Purchase")
         print("3. Current Stock")
         print("4. Exit the program")
-        print(decorations.decorationDash())
-        print(decorations.decorationStar())
+        print(operations.decorationDash())
+        print(operations.decorationStar())
         print("\n")
 
         while True:
@@ -38,19 +37,19 @@ def welcomeScreenMain():
             # Input validation for the available choice
             if userChoice < 1 or userChoice > 4:
                 print("\nSelection Invalid, please try again!\n")
-                print(decorations.decorationDash())
+                print(operations.decorationDash())
                 continue
 
             break
         
         if userChoice == 1:
-            print(decorations.decorationDash())
+            print(operations.decorationDash())
             operations.display()  # Calling the main Display method which displays the available stock 
 
             sellLaptop.sellLaptopMain()  # Calling the sell method which decreases stock and generates bill as required by the user
 
-            print(decorations.decorationTilde())
-            print(decorations.decorationDash())
+            print(operations.decorationTilde())
+            print(operations.decorationDash())
                 
         elif userChoice == 2:
             purchaseLaptop.purchaseLaptopMain()  # calling the purchase function which increases stock or adds new stock as per requirement
